@@ -1,0 +1,14 @@
+node_modules/
+dist/
+data/
+.env
+.env.local
+*.db
+*.db-shm
+*.db-wal
+test-results/
+playwright-report/
+blob-report/
+.vite/
+npm-debug.log*
+.DS_Store

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Practice iframe · QA Automation Labs</title>
+    <link rel="icon" href="data:," />
+    <style>
+      :root {
+        color-scheme: light;
+        --brand: #8f1f3a;
+        --brand-soft: #fdf2f4;
+        --ink: #1e293b;
+        --muted: #64748b;
+        --line: #e2e8f0;
+        --ok: #059669;
+        --err: #dc2626;
+        font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 18px;
+        background: #ffffff;
+        color: var(--ink);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      h1 { font-size: 17px; margin: 0 0 2px; }
+      h2 { font-size: 14px; margin: 22px 0 10px; }
+      p.lead { margin: 0 0 14px; color: var(--muted); font-size: 12.5px; }
+      .badge {
+        display: inline-block;
+        background: var(--brand-soft);
+        color: var(--brand);
+        border-radius: 999px;
+        padding: 2px 9px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+      label { display: block; font-weight: 600; font-size: 12px; margin-bottom: 4px; }
+      input, select, textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px 10px;
+        font: inherit;
+        color: inherit;
+        background: #fff;
+      }
+      input:focus, select:focus, textarea:focus { outline: 2px solid #06b6d4; outline-offset: 1px; border-color: #06b6d4; }
+      .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+      button {
+        font: inherit;
+        font-weight: 700;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        padding: 8px 14px;
+        cursor: pointer;
+        background: var(--brand);
+        color: #fff;
+      }
+      button.secondary { background: #fff; border-color: var(--line); color: var(--ink); }
+      button:disabled { opacity: 0.5; cursor: not-allowed; }
+      .status { margin-top: 10px; font-size: 12.5px; font-weight: 600; }
+      .status.ok { color: var(--ok); }
+      .status.err { color: var(--err); }
+      .card { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+      .modal-backdrop {
+        position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45);
+        display: none; align-items: center; justify-content: center; padding: 16px;
+      }
+      .modal-backdrop.open { display: flex; }
+      .modal { background: #fff; border-radius: 12px; padding: 16px; width: min(320px, 100%); box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.6); }
+      .modal h3 { margin: 0 0 6px; font-size: 15px; }
+      .modal p { margin: 0 0 12px; color: var(--muted); font-size: 12.5px; }
+      ul.list { margin: 0; padding-left: 18px; color: var(--muted); font-size: 12.5px; }
+    </style>
+  </head>
+  <body>
+    <span class="badge">Inside the iframe</span>
+    <h1 data-testid="iframe-heading">QA Automation Labs · Feedback</h1>
+    <p class="lead">This document is loaded with the same origin as the parent page, so Selenium and Playwright can switch into it.</p>
+
+    <form id="iframe-form" novalidate>
+      <div class="grid">
+        <div>
+          <label for="iframe-name">Full name</label>
+          <input id="iframe-name" name="name" type="text" placeholder="Ada Lovelace" data-testid="iframe-name" autocomplete="off" />
+        </div>
+        <div>
+          <label for="iframe-email">Email</label>
+          <input id="iframe-email" name="email" type="email" placeholder="ada@example.com" data-testid="iframe-email" autocomplete="off" />
+        </div>
+      </div>
+      <div style="margin-top: 10px">
+        <label for="iframe-topic">Topic</label>
+        <select id="iframe-topic" name="topic" data-testid="iframe-topic">
+          <option value="playwright">Playwright</option>
+          <option value="selenium">Selenium</option>
+          <option value="cypress">Cypress</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+      <div style="margin-top: 10px">
+        <label for="iframe-comments">Comments</label>
+        <textarea id="iframe-comments" name="comments" rows="2" placeholder="Optional comments…" data-testid="iframe-comments"></textarea>
+      </div>
+      <div class="row" style="margin-top: 12px">
+        <button type="submit" data-testid="iframe-submit">Submit feedback</button>
+        <button type="button" class="secondary" id="iframe-reset" data-testid="iframe-reset">Reset</button>
+        <button type="button" class="secondary" id="iframe-open-modal" data-testid="iframe-open-modal">Open nested modal</button>
+      </div>
+      <p class="status" id="iframe-status" data-testid="iframe-status" aria-live="polite"></p>
+    </form>
+
+    <h2>Elements to practice on</h2>
+    <div class="card">
+      <ul class="list">
+        <li><code>data-testid="iframe-name"</code> — text input</li>
+        <li><code>data-testid="iframe-topic"</code> — select element</li>
+        <li><code>data-testid="iframe-submit"</code> — submit button</li>
+        <li><code>data-testid="iframe-nested-modal"</code> — modal rendered inside this frame</li>
+      </ul>
+    </div>
+
+    <div class="modal-backdrop" id="iframe-modal" data-testid="iframe-modal">
+      <div class="modal" role="dialog" aria-modal="true" aria-label="Nested modal">
+        <h3>Hello from inside the frame</h3>
+        <p>Switch into this frame, open the modal and click the button to verify nested interactions.</p>
+        <div class="row">
+          <button type="button" data-testid="iframe-nested-modal" id="iframe-modal-ok">Acknowledge</button>
+          <button type="button" class="secondary" data-testid="iframe-modal-close" id="iframe-modal-close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var form = document.getElementById('iframe-form');
+        var status = document.getElementById('iframe-status');
+        var modal = document.getElementById('iframe-modal');
+        var nameInput = document.getElementById('iframe-name');
+
+        function post(message) {
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage(message, window.location.origin);
+          }
+        }
+
+        function setStatus(text, kind) {
+          status.textContent = text;
+          status.className = 'status ' + (kind || '');
+        }
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          var name = nameInput.value.trim();
+          var email = document.getElementById('iframe-email').value.trim();
+          var topic = document.getElementById('iframe-topic').value;
+          if (name.length < 2) {
+            setStatus('Please enter your full name.', 'err');
+            nameInput.focus();
+            return;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email)) {
+            setStatus('Please enter a valid email address.', 'err');
+            document.getElementById('iframe-email').focus();
+            return;
+          }
+          setStatus('Thanks ' + name + ' — feedback received for ' + topic + '.', 'ok');
+          post({ type: 'frame-submitted', name: name, email: email, topic: topic });
+        });
+
+        document.getElementById('iframe-reset').addEventListener('click', function () {
+          form.reset();
+          setStatus('Form reset.', '');
+          post({ type: 'frame-notify', message: 'The in-frame form was reset.' });
+        });
+
+        document.getElementById('iframe-open-modal').addEventListener('click', function () {
+          modal.classList.add('open');
+          document.getElementById('iframe-modal-ok').focus();
+        });
+
+        document.getElementById('iframe-modal-close').addEventListener('click', function () {
+          modal.classList.remove('open');
+        });
+
+        document.getElementById('iframe-modal-ok').addEventListener('click', function () {
+          modal.classList.remove('open');
+          setStatus('Nested modal acknowledged.', 'ok');
+          post({ type: 'frame-notify', message: 'Nested modal acknowledged inside the iframe.' });
+        });
+
+        post({ type: 'frame-ready', title: document.title });
+      })();
+    </script>
+  </body>
+</html>

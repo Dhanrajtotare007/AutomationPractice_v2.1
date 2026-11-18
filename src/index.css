@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  * {
+    scrollbar-width: thin;
+  }
+
+  body {
+    @apply font-sans;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-cyan-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950;
+  }
+
+  ::selection {
+    @apply bg-burgundy-200 text-burgundy-900;
+  }
+}
+
+@layer components {
+  .surface {
+    @apply rounded-xl2 border border-slate-200 bg-white shadow-card dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .surface-muted {
+    @apply rounded-xl2 border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900/60;
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:disabled:bg-slate-800 dark:disabled:text-slate-400;
+  }
+
+  .field-error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/30;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300;
+  }
+
+  .help {
+    @apply mt-1 text-xs text-slate-500 dark:text-slate-400;
+  }
+
+  .check-row {
+    @apply flex items-start gap-2 rounded-lg px-2 py-1.5 text-sm text-slate-700 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800/70;
+  }
+
+  .nav-link {
+    @apply relative inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-burgundy-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white;
+  }
+
+  .nav-link-active {
+    @apply bg-cyan-500/15 text-cyan-700 dark:bg-cyan-500/20 dark:text-cyan-300;
+  }
+
+  .sidebar-link {
+    @apply flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-burgundy-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white;
+  }
+
+  .sidebar-link-active {
+    @apply bg-burgundy-700 text-white shadow-sm hover:bg-burgundy-700 hover:text-white dark:bg-burgundy-600 dark:hover:bg-burgundy-600;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold tracking-tight text-slate-900 dark:text-white;
+  }
+
+  .prose-qa p {
+    @apply mb-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-300 dark:bg-slate-700;
+  }
+  .hero-grid {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12) 0, transparent 45%),
+      radial-gradient(circle at 80% 0%, rgba(34, 208, 229, 0.22) 0, transparent 40%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes toast-shrink {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}

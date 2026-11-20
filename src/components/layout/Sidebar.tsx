@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, FlaskConical, LayoutDashboard, RotateCcw, CheckCircle2 } from 'lucide-react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import { ArrowLeft, ChevronLeft, ChevronRight, LayoutDashboard, ListChecks, RotateCcw, CheckCircle2 } from 'lucide-react';
 import { PRACTICE_MODULES } from '@shared/modules';
 import { clsx } from '@/lib/clsx';
 import { useProgress } from '@/lib/useProgress';
@@ -37,7 +37,7 @@ export function Sidebar({
   const item = (slug: string, title: string, icon: string, done?: { completed: number; total: number }) => (
     <li key={slug}>
       <NavLink
-        to={`/testing/${slug}`}
+        to={`/labs/${slug}`}
         className={({ isActive }) => clsx('sidebar-link', isActive && 'sidebar-link-active', collapsed && 'justify-center px-0')}
         data-testid={`sidebar-${slug}`}
         title={collapsed ? title : undefined}
@@ -50,9 +50,7 @@ export function Sidebar({
               <span
                 className={clsx(
                   'ml-auto flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[10px] font-bold',
-                  done.completed === done.total
-                    ? 'bg-emerald-500/20 text-emerald-200'
-                    : 'bg-white/15 text-white/90',
+                  done.completed === done.total ? 'bg-emerald-500/25 text-emerald-100' : 'bg-white/15 text-white/90',
                 )}
               >
                 {done.completed === done.total ? <CheckCircle2 className="h-3 w-3" aria-hidden /> : null}
@@ -71,7 +69,7 @@ export function Sidebar({
     <>
       <div
         className={clsx(
-          'fixed inset-0 z-30 bg-slate-950/40 backdrop-blur-[1px] transition-opacity xl:hidden',
+          'fixed inset-0 z-30 bg-navy-950/50 backdrop-blur-[1px] transition-opacity lg:hidden',
           open ? 'opacity-100' : 'pointer-events-none opacity-0',
         )}
         onClick={onClose}
@@ -79,9 +77,9 @@ export function Sidebar({
       />
       <aside
         id="testing-sidebar"
-        aria-label="Testing tools"
+        aria-label="Practice labs"
         className={clsx(
-          'fixed bottom-0 left-0 top-16 z-30 flex flex-col overflow-hidden border-r border-slate-200 bg-white transition-transform duration-200 dark:border-slate-800 dark:bg-slate-900 xl:sticky lg:top-16 xl:z-0 xl:h-[calc(100vh-4rem)] xl:translate-x-0',
+          'fixed bottom-0 left-0 top-16 z-30 flex flex-col overflow-hidden border-r border-slate-200 bg-white transition-transform duration-200 lg:sticky lg:top-16 lg:z-0 lg:h-[calc(100vh-4rem)] lg:translate-x-0 dark:border-white/10 dark:bg-navy-900',
           collapsed ? 'w-16' : 'w-64',
           open ? 'translate-x-0' : '-translate-x-full',
         )}
@@ -91,21 +89,17 @@ export function Sidebar({
           <button
             type="button"
             onClick={onClose}
-            className="ml-auto rounded-md p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 xl:hidden dark:hover:bg-slate-800 dark:hover:text-white"
-            aria-label="Close testing tools sidebar"
+            className="ml-auto rounded-md p-1 text-slate-400 transition hover:bg-slate-100 hover:text-navy-900 lg:hidden dark:hover:bg-white/10 dark:hover:text-white"
+            aria-label="Close practice lab sidebar"
             data-testid="sidebar-close"
           >
             <ChevronLeft className="h-4 w-4" aria-hidden />
           </button>
-          {!collapsed ? (
-            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">Testing Tools</p>
-          ) : (
-            <FlaskConical className="h-4 w-4 text-burgundy-700 dark:text-burgundy-300" aria-hidden />
-          )}
+          {!collapsed ? <p className="eyebrow">Practice Labs</p> : <ListChecks className="h-4 w-4 text-brand-600 dark:text-brand-300" aria-hidden />}
           <button
             type="button"
             onClick={onToggleCollapse}
-            className="ml-auto hidden rounded-md p-1 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 xl:block dark:hover:bg-slate-800 dark:hover:text-white"
+            className="ml-auto hidden rounded-md p-1 text-slate-400 transition hover:bg-slate-100 hover:text-navy-900 lg:block dark:hover:bg-white/10 dark:hover:text-white"
             aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             aria-expanded={!collapsed}
             data-testid="sidebar-collapse-toggle"
@@ -118,25 +112,36 @@ export function Sidebar({
           <ul className="space-y-0.5" data-testid="sidebar-nav">
             <li>
               <NavLink
-                to="/testing"
+                to="/labs"
                 end
                 className={({ isActive }) => clsx('sidebar-link', isActive && 'sidebar-link-active', collapsed && 'justify-center px-0')}
                 data-testid="sidebar-dashboard"
-                title={collapsed ? 'Dashboard' : undefined}
+                title={collapsed ? 'All practice labs' : undefined}
               >
                 <LayoutDashboard className="h-4 w-4 shrink-0" aria-hidden />
-                {!collapsed ? <span>Dashboard</span> : null}
+                {!collapsed ? <span>All practice labs</span> : null}
               </NavLink>
             </li>
-            <li aria-hidden className="my-2 border-t border-slate-200 dark:border-slate-800" />
+            <li>
+              <Link
+                to="/"
+                className={clsx('sidebar-link', collapsed && 'justify-center px-0')}
+                title={collapsed ? 'Back to home' : undefined}
+                data-testid="sidebar-home"
+              >
+                <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden />
+                {!collapsed ? <span>Back to home</span> : null}
+              </Link>
+            </li>
+            <li aria-hidden className="my-2 border-t border-slate-200 dark:border-white/10" />
             {PRACTICE_MODULES.map((module) => item(module.slug, module.title, module.icon, moduleProgress(module.slug)))}
           </ul>
         </nav>
 
-        <div className={clsx('border-t border-slate-200 p-3 dark:border-slate-800', collapsed && 'px-1.5')}>
+        <div className={clsx('border-t border-slate-200 p-3 dark:border-white/10', collapsed && 'px-1.5')}>
           {collapsed ? (
             <Tooltip content={`${summary.percent}% complete`}>
-              <div className="grid h-8 w-8 place-items-center rounded-full bg-burgundy-50 text-[10px] font-bold text-burgundy-700 dark:bg-burgundy-900/40 dark:text-burgundy-200">
+              <div className="grid h-8 w-8 place-items-center rounded-full bg-brand-50 text-[10px] font-bold text-brand-700 dark:bg-brand-500/20 dark:text-brand-100">
                 {summary.percent}%
               </div>
             </Tooltip>
@@ -149,7 +154,16 @@ export function Sidebar({
               />
               {confirmReset ? (
                 <div className="mt-2 flex gap-1.5">
-                  <Button size="sm" variant="danger" className="flex-1" onClick={() => { reset(); setConfirmReset(false); }} data-testid="sidebar-progress-reset-confirm">
+                  <Button
+                    size="sm"
+                    variant="danger"
+                    className="flex-1"
+                    onClick={() => {
+                      reset();
+                      setConfirmReset(false);
+                    }}
+                    data-testid="sidebar-progress-reset-confirm"
+                  >
                     Confirm
                   </Button>
                   <Button size="sm" variant="ghost" onClick={() => setConfirmReset(false)}>

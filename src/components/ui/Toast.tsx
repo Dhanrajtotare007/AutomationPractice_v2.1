@@ -36,7 +36,7 @@ const KIND_STYLES: Record<ToastKind, { icon: ReactNode; ring: string; bar: strin
   success: { icon: <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden />, ring: 'border-emerald-200 dark:border-emerald-900', bar: 'bg-emerald-500' },
   error: { icon: <XCircle className="h-5 w-5 shrink-0 text-red-500" aria-hidden />, ring: 'border-red-200 dark:border-red-900', bar: 'bg-red-500' },
   warning: { icon: <AlertTriangle className="h-5 w-5 shrink-0 text-amber-500" aria-hidden />, ring: 'border-amber-200 dark:border-amber-900', bar: 'bg-amber-500' },
-  info: { icon: <Info className="h-5 w-5 shrink-0 text-cyan-500" aria-hidden />, ring: 'border-cyan-200 dark:border-cyan-900', bar: 'bg-cyan-500' },
+  info: { icon: <Info className="h-5 w-5 shrink-0 text-accent-500" aria-hidden />, ring: 'border-accent-200 dark:border-accent-900', bar: 'bg-accent-500' },
 };
 
 const ToastContext = createContext<ToastApi | null>(null);

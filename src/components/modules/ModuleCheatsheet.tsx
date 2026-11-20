@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+﻿import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Rocket, ShieldCheck, Terminal } from 'lucide-react';
 import { PRACTICE_MODULES } from '@shared/modules';
@@ -71,7 +71,7 @@ def test_${slug.replace(/-/g, '_')}(driver):
       <CardHeader
         icon={<Terminal className="h-4 w-4" aria-hidden />}
         title="Framework starter snippets"
-        description="Run these against a locally running playground. Auto-waiting assertions keep the suites stable."
+        description="Run these against a locally running Automation Practice instance. Auto-waiting assertions keep the suites stable."
         actions={
           <Badge tone="success" className="gap-1">
             <ShieldCheck className="h-3 w-3" aria-hidden /> Explicit waits
@@ -98,11 +98,12 @@ def test_${slug.replace(/-/g, '_')}(driver):
       </div>
       <p className="mt-3 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
         <Rocket className="h-3.5 w-3.5" aria-hidden />
-        The playground ships an opinionated test id on every control, so you never need brittle CSS chains.
-        <Link to="/about" className="font-semibold text-burgundy-700 underline-offset-2 hover:underline dark:text-burgundy-300">
+        Every lab ships an opinionated test id on every control, so you never need brittle CSS chains.
+        <Link to="/about" className="font-semibold text-brand-700 underline-offset-2 hover:underline dark:text-brand-300">
           Learn more
         </Link>
       </p>
     </Card>
   );
 }
+

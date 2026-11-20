@@ -55,9 +55,9 @@ function highlight(code: string) {
     let className = '';
     if (part.startsWith('//') || part.startsWith('#')) className = 'text-slate-500 italic';
     else if (/^['"`]/.test(part)) className = 'text-amber-300';
-    else if (/^\d+$/.test(part)) className = 'text-cyan-300';
+    else if (/^\d+$/.test(part)) className = 'text-accent-300';
     else if (/^(const|let|await|async|import|from|def|return|expect|driver|page|cy|class|new|function|if|else|for|in|True|False|None)$/.test(part))
-      className = 'text-burgundy-300';
+      className = 'text-brand-300';
     return className ? (
       <span key={index} className={className}>
         {part}
@@ -92,7 +92,7 @@ export function CodeBlock({
     >
       <figcaption className="flex items-center justify-between gap-2 border-b border-slate-800 px-3 py-2">
         <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-          <span className="h-2 w-2 rounded-full bg-burgundy-400" aria-hidden />
+          <span className="h-2 w-2 rounded-full bg-brand-400" aria-hidden />
           {title ?? language ?? 'code'}
         </span>
         <CopyButton value={code} testId={copyTestId} />
@@ -106,7 +106,7 @@ export function CodeBlock({
 
 export function InlineCode({ children }: { children: ReactNode }) {
   return (
-    <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[12px] text-burgundy-700 dark:bg-slate-800 dark:text-burgundy-200">
+    <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[12px] text-brand-700 dark:bg-slate-800 dark:text-brand-200">
       {children}
     </code>
   );

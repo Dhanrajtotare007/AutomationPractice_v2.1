@@ -182,7 +182,7 @@ export function DropdownModule() {
             <button
               type="button"
               onClick={() => setLanguages([])}
-              className="inline-flex items-center gap-1 rounded-md border border-slate-300 px-2 py-1 text-[11px] font-semibold text-slate-600 hover:border-burgundy-300 dark:border-slate-700 dark:text-slate-300"
+              className="inline-flex items-center gap-1 rounded-md border border-slate-300 px-2 py-1 text-[11px] font-semibold text-slate-600 hover:border-brand-300 dark:border-slate-700 dark:text-slate-300"
               data-testid="dropdown-clear-languages"
             >
               <X className="h-3 w-3" aria-hidden /> Clear
@@ -309,7 +309,7 @@ export function DropdownModule() {
                       onMouseEnter={() => setActiveIndex(index)}
                       className={cx(
                         'flex w-full items-center justify-between rounded-lg px-3 py-1.5 text-left text-sm',
-                        index === activeIndex ? 'bg-burgundy-50 text-burgundy-800 dark:bg-burgundy-950/60 dark:text-burgundy-100' : 'text-slate-700 dark:text-slate-200',
+                        index === activeIndex ? 'bg-brand-50 text-brand-800 dark:bg-brand-950/60 dark:text-brand-100' : 'text-slate-700 dark:text-slate-200',
                       )}
                       data-testid={`dropdown-framework-option-${item.toLowerCase().replace(/\s+/g, '-')}`}
                     >

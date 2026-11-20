@@ -79,7 +79,7 @@ export function Calendar({
           type="button"
           onClick={() => shift(-1)}
           aria-label="Previous month"
-          className="rounded-md p-1.5 text-slate-500 transition hover:bg-slate-100 hover:text-burgundy-700 dark:hover:bg-slate-800 dark:hover:text-white"
+          className="rounded-md p-1.5 text-slate-500 transition hover:bg-slate-100 hover:text-brand-700 dark:hover:bg-slate-800 dark:hover:text-white"
           data-testid={`${testIdPrefix}-prev-month`}
         >
           <ChevronLeft className="h-4 w-4" aria-hidden />
@@ -91,7 +91,7 @@ export function Calendar({
           type="button"
           onClick={() => shift(1)}
           aria-label="Next month"
-          className="rounded-md p-1.5 text-slate-500 transition hover:bg-slate-100 hover:text-burgundy-700 dark:hover:bg-slate-800 dark:hover:text-white"
+          className="rounded-md p-1.5 text-slate-500 transition hover:bg-slate-100 hover:text-brand-700 dark:hover:bg-slate-800 dark:hover:text-white"
           data-testid={`${testIdPrefix}-next-month`}
         >
           <ChevronRight className="h-4 w-4" aria-hidden />
@@ -124,9 +124,9 @@ export function Calendar({
               className={cx(
                 'grid h-8 place-items-center rounded-md text-xs font-semibold transition',
                 disabled && 'cursor-not-allowed text-slate-300 line-through dark:text-slate-600',
-                !disabled && !isSelected && !inRange && 'text-slate-700 hover:bg-burgundy-50 hover:text-burgundy-700 dark:text-slate-200 dark:hover:bg-burgundy-950/50',
-                inRange && !isSelected && 'bg-cyan-100 text-cyan-800 dark:bg-cyan-950/60 dark:text-cyan-200',
-                isSelected && 'bg-burgundy-700 text-white',
+                !disabled && !isSelected && !inRange && 'text-slate-700 hover:bg-brand-50 hover:text-brand-700 dark:text-slate-200 dark:hover:bg-brand-950/50',
+                inRange && !isSelected && 'bg-accent-100 text-accent-800 dark:bg-accent-950/60 dark:text-accent-200',
+                isSelected && 'bg-brand-700 text-white',
               )}
             >
               {Number(iso.slice(-2))}

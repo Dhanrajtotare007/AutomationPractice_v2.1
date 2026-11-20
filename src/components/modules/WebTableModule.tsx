@@ -218,12 +218,12 @@ export function WebTableModule() {
         <button
           type="button"
           onClick={() => sort(column)}
-          className="inline-flex items-center gap-1 transition hover:text-burgundy-700 dark:hover:text-white"
+          className="inline-flex items-center gap-1 transition hover:text-brand-700 dark:hover:text-white"
           data-testid={`table-sort-${column}`}
           aria-sort={active ? (sortDir === 'asc' ? 'ascending' : 'descending') : 'none'}
         >
           {label}
-          <Icon className={`h-3 w-3 ${active ? 'text-burgundy-600 dark:text-burgundy-300' : 'text-slate-400'}`} aria-hidden />
+          <Icon className={`h-3 w-3 ${active ? 'text-brand-600 dark:text-brand-300' : 'text-slate-400'}`} aria-hidden />
         </button>
       </th>
     );
@@ -326,7 +326,7 @@ export function WebTableModule() {
                     aria-label="Select all rows on this page"
                     checked={allOnPageSelected}
                     onChange={toggleAll}
-                    className="h-4 w-4 rounded border-slate-300 accent-burgundy-700"
+                    className="h-4 w-4 rounded border-slate-300 accent-brand-700"
                     data-testid="table-select-all"
                   />
                 </th>
@@ -357,7 +357,7 @@ export function WebTableModule() {
                       data-testid={`table-row-${employee.id}`}
                       className={
                         selected.includes(employee.id)
-                          ? 'bg-burgundy-50/70 dark:bg-burgundy-950/30'
+                          ? 'bg-brand-50/70 dark:bg-brand-950/30'
                           : 'hover:bg-slate-50 dark:hover:bg-slate-800/50'
                       }
                     >
@@ -367,7 +367,7 @@ export function WebTableModule() {
                           aria-label={`Select ${employee.name}`}
                           checked={selected.includes(employee.id)}
                           onChange={() => toggleRow(employee.id)}
-                          className="h-4 w-4 rounded border-slate-300 accent-burgundy-700"
+                          className="h-4 w-4 rounded border-slate-300 accent-brand-700"
                           data-testid={`table-select-row-${employee.id}`}
                         />
                       </td>
@@ -392,7 +392,7 @@ export function WebTableModule() {
                             type="button"
                             onClick={() => openEdit(employee)}
                             aria-label={`Edit ${employee.name}`}
-                            className="rounded-md p-1.5 text-slate-500 transition hover:bg-cyan-50 hover:text-cyan-700 dark:hover:bg-cyan-950/40 dark:hover:text-cyan-300"
+                            className="rounded-md p-1.5 text-slate-500 transition hover:bg-accent-50 hover:text-accent-700 dark:hover:bg-accent-950/40 dark:hover:text-accent-300"
                             data-testid={`table-edit-${employee.id}`}
                           >
                             <Pencil className="h-3.5 w-3.5" aria-hidden />
@@ -454,7 +454,7 @@ export function WebTableModule() {
                     data-testid={`table-page-${value}`}
                     className={
                       value === page
-                        ? 'h-8 min-w-8 rounded-md bg-burgundy-700 px-2 text-xs font-bold text-white'
+                        ? 'h-8 min-w-8 rounded-md bg-brand-700 px-2 text-xs font-bold text-white'
                         : 'h-8 min-w-8 rounded-md px-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
                     }
                   >

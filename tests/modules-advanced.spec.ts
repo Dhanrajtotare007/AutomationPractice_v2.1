@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+﻿import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { expect, test, openModule } from './fixtures';
@@ -74,7 +74,7 @@ test.describe('iframe module', () => {
   test('interacts with the embedded document', async ({ page }) => {
     await openModule(page, 'iframe');
     const frame = page.frameLocator('[data-testid="iframe-demo"]');
-    await expect(frame.getByTestId('iframe-heading')).toContainText('QA Automation Labs');
+    await expect(frame.getByTestId('iframe-heading')).toContainText('Automation Practice');
     await frame.getByTestId('iframe-name').fill('Ada Lovelace');
     await frame.getByTestId('iframe-email').fill('ada@example.com');
     await frame.getByTestId('iframe-topic').selectOption('playwright');
@@ -362,3 +362,4 @@ test.describe('dynamic waits module', () => {
     await expect(page.getByTestId('waits-text-output')).toHaveText('Button was clicked!');
   });
 });
+

@@ -174,7 +174,7 @@ export function ShadowDomModule() {
           <button
             type="button"
             onClick={sendFromLightDom}
-            className="inline-flex h-10 items-center rounded-lg bg-burgundy-700 px-4 text-sm font-semibold text-white transition hover:bg-burgundy-800"
+            className="inline-flex h-10 items-center rounded-lg bg-brand-700 px-4 text-sm font-semibold text-white transition hover:bg-brand-800"
             data-testid="shadow-light-send"
           >
             Send value

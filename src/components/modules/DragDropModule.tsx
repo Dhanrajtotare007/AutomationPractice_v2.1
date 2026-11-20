@@ -164,7 +164,7 @@ export function DragDropModule() {
               className={cx(
                 'min-h-[220px] rounded-xl border-2 border-dashed p-2.5 transition',
                 zone.tone,
-                overZone === zone.key && 'border-burgundy-500 bg-burgundy-50/60 dark:bg-burgundy-950/30',
+                overZone === zone.key && 'border-brand-500 bg-brand-50/60 dark:bg-brand-950/30',
               )}
               aria-label={`${zone.title} drop zone`}
             >
@@ -192,7 +192,7 @@ export function DragDropModule() {
                       className={cx(
                         'group flex touch-none cursor-grab select-none items-center gap-2 rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-sm shadow-sm transition active:cursor-grabbing dark:border-slate-700 dark:bg-slate-800',
                         dragging === item.id && 'opacity-40',
-                        pointerItem === item.id && 'ring-2 ring-burgundy-400',
+                        pointerItem === item.id && 'ring-2 ring-brand-400',
                       )}
                     >
                       <GripVertical className="h-4 w-4 shrink-0 text-slate-400" aria-hidden />

@@ -27,7 +27,7 @@ export function OutputPanel({
     neutral: 'border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-900/60',
     success: 'border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950/40',
     error: 'border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950/40',
-    info: 'border-cyan-200 bg-cyan-50 dark:border-cyan-900 dark:bg-cyan-950/40',
+    info: 'border-accent-200 bg-accent-50 dark:border-accent-900 dark:bg-accent-950/40',
   }[tone];
 
   return (

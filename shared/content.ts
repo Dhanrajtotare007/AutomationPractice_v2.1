@@ -1,150 +1,4 @@
-/** Marketing / learning content used across the informational pages. */
-
-export interface BookResource {
-  id: string;
-  title: string;
-  author: string;
-  price: number;
-  rating: number;
-  tag: string;
-  summary: string;
-  coverFrom: string;
-  coverTo: string;
-}
-
-export const BOOKS: BookResource[] = [
-  {
-    id: 'playwright-in-action',
-    title: 'Playwright in Action',
-    author: 'QA Automation Labs',
-    price: 39,
-    rating: 4.9,
-    tag: 'Best seller',
-    summary: 'Component-level testing, tracing, parallelism and CI pipelines with the modern Playwright API.',
-    coverFrom: 'from-burgundy-700',
-    coverTo: 'to-burgundy-500',
-  },
-  {
-    id: 'selenium-python-handbook',
-    title: 'Selenium with Python Workbook',
-    author: 'QA Automation Labs',
-    price: 29,
-    rating: 4.7,
-    tag: 'Updated 2026',
-    summary: 'Page objects, fixtures and reliable waits - 40 graded exercises with reference solutions.',
-    coverFrom: 'from-slate-800',
-    coverTo: 'to-slate-600',
-  },
-  {
-    id: 'cypress-essentials',
-    title: 'Cypress Testing Essentials',
-    author: 'QA Automation Labs',
-    price: 34,
-    rating: 4.8,
-    tag: 'New',
-    summary: 'From first cy.visit() to network stubbing, custom commands and visual regression.',
-    coverFrom: 'from-cyan-700',
-    coverTo: 'to-cyan-500',
-  },
-];
-
-export interface Course {
-  id: string;
-  title: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced';
-  weeks: number;
-  lessons: number;
-  price: number;
-  summary: string;
-  highlights: string[];
-}
-
-export const COURSES: Course[] = [
-  {
-    id: 'playwright-fundamentals',
-    title: 'Playwright Fundamentals',
-    level: 'Beginner',
-    weeks: 4,
-    lessons: 28,
-    price: 149,
-    summary: 'Locators, auto-waiting, assertions and your first CI run with TypeScript Playwright.',
-    highlights: ['Locator strategies', 'Trace viewer debugging', 'GitHub Actions pipeline'],
-  },
-  {
-    id: 'selenium-python-professional',
-    title: 'Selenium with Python - Professional',
-    level: 'Intermediate',
-    weeks: 6,
-    lessons: 42,
-    price: 199,
-    summary: 'Build a maintainable framework: page objects, fixtures, reporting and parallel runs.',
-    highlights: ['Pytest fixtures', 'Page object model', 'Allure reporting'],
-  },
-  {
-    id: 'cypress-masterclass',
-    title: 'Cypress Masterclass',
-    level: 'Intermediate',
-    weeks: 5,
-    lessons: 36,
-    price: 179,
-    summary: 'Fast feedback loops with component testing, network control and custom commands.',
-    highlights: ['Network stubbing', 'Component testing', 'Custom commands'],
-  },
-  {
-    id: 'automation-architecture',
-    title: 'Automation Architecture at Scale',
-    level: 'Advanced',
-    weeks: 8,
-    lessons: 54,
-    price: 299,
-    summary: 'Design a multi-team test suite: sharding, flake detection, metrics and test data strategy.',
-    highlights: ['Sharding & parallelism', 'Flake quarantine', 'Quality gates & metrics'],
-  },
-];
-
-export interface EventItem {
-  id: string;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  mode: 'Online' | 'In person' | 'Hybrid';
-  seats: number;
-  summary: string;
-}
-
-export const EVENTS: EventItem[] = [
-  {
-    id: 'meetup-locators',
-    title: 'Locator Strategy Meetup',
-    date: '2026-12-04',
-    time: '18:00 - 20:00',
-    location: 'Online (Zoom)',
-    mode: 'Online',
-    seats: 120,
-    summary: 'Live walkthrough of resilient locator strategies across Playwright, Selenium and Cypress.',
-  },
-  {
-    id: 'workshop-cicd',
-    title: 'CI/CD for Test Automation Workshop',
-    date: '2026-12-18',
-    time: '10:00 - 16:00',
-    location: 'Bengaluru, India',
-    mode: 'Hybrid',
-    seats: 40,
-    summary: 'Hands-on: parallel sharding, artefacts, tracing and flake triage on a real pipeline.',
-  },
-  {
-    id: 'summit-2027',
-    title: 'QA Automation Summit 2027',
-    date: '2027-02-11',
-    time: '09:00 - 17:30',
-    location: 'Amsterdam, NL',
-    mode: 'In person',
-    seats: 300,
-    summary: 'Two tracks, twelve speakers - covering AI assisted testing and visual regression.',
-  },
-];
+/** Learning content used across the informational pages. */
 
 export interface Article {
   slug: string;
@@ -170,7 +24,7 @@ export const ARTICLES: Article[] = [
     body: [
       'A fixed sleep is a promise that your application will never be slower than a magic number. That promise breaks the first time CI runs on a shared runner.',
       'Playwright retries locator actions automatically, so most sleeps can be deleted outright. Where a condition is genuinely asynchronous, assert on the outcome instead: expect(locator).toBeVisible().',
-      'With Selenium use WebDriverWait with expected_conditions and always scope the wait to the smallest possible condition - visibility, clickability, or the presence of a specific text.',
+      'With Selenium use WebDriverWait with expected_conditions and always scope the wait to the smallest possible condition - visibility, clickability, or the presence of a specific text. Practise this on the Dynamic Waits lab.',
       'Track flaky results over time. A wait that fails intermittently is telling you about a real product race condition, not a test problem.',
     ],
   },
@@ -185,7 +39,7 @@ export const ARTICLES: Article[] = [
       'Prefer user facing locators, then stable ids, then test ids. Everything else is a last resort - here is the ladder in practice.',
     body: [
       'Start from getByRole and getByLabel. If an element is reachable by a screen reader, it is reachable by a test.',
-      'When semantics are not enough, use a dedicated data-testid attribute. It decouples the test from styling and copy churn.',
+      'When semantics are not enough, use a dedicated data-testid attribute. It decouples the test from styling and copy churn. Every control in the practice labs ships one.',
       'Avoid long CSS chains and generated classes. XPath by index is the most fragile option and should be reserved for tables where structure is meaningful.',
       'Record the reason next to the locator - a one line comment saves hours six months later.',
     ],
@@ -201,9 +55,41 @@ export const ARTICLES: Article[] = [
       'Install, scaffold, write three tests, and wire up a CI pipeline that publishes traces on failure.',
     body: [
       'Run npm init playwright@latest and choose TypeScript. The generated configuration already contains sensible retries and trace on first retry.',
-      'Write your first test against the playground: navigate, locate a checkbox by role, click, assert.',
+      'Write your first test against the Checkbox lab: navigate, locate a checkbox by role, click, assert.',
       'Add trace: on-first-retry so failing CI runs produce a complete timeline you can open locally.',
       'Finally, shard the suite across jobs to keep feedback under five minutes.',
+    ],
+  },
+  {
+    slug: 'shadow-dom-locators',
+    title: 'Locating elements inside Shadow DOM',
+    author: 'Chen Wei',
+    date: '2026-08-21',
+    minutes: 7,
+    tags: ['Shadow DOM', 'Locators', 'Advanced'],
+    excerpt:
+      'Document level CSS cannot cross a shadow boundary. Here is how each framework pierces open shadow roots, and what to do when they are closed.',
+    body: [
+      'A shadow root encapsulates its subtree. document.querySelector will never see anything inside it, no matter how specific the selector is.',
+      'Playwright pierces open shadow DOM automatically, so page.getByTestId() works through nested roots. Selenium needs element.shadow_root.find_element(...) at each level.',
+      'Cypress needs .shadow() or the includeShadowDom option. Nested roots require chaining .shadow() once per boundary.',
+      'Closed shadow roots are intentionally unreachable - if you need to test them, ask the component author for a test id on the host element instead.',
+    ],
+  },
+  {
+    slug: 'api-testing-checklist',
+    title: 'The API testing checklist before you open the UI',
+    author: 'Daniel Okafor',
+    date: '2026-08-02',
+    minutes: 5,
+    tags: ['API', 'Test strategy'],
+    excerpt:
+      'Seeding data through the API keeps UI tests short and deterministic. These are the checks worth automating first.',
+    body: [
+      'Start with the contract: status codes, envelope shape and required fields. A fast contract test catches most breakages before the browser starts.',
+      'Validate the negative paths - missing fields, wrong types, duplicate records. The practice API returns 400 with a details array you can assert on.',
+      'Use the API to create fixtures for a UI test, then delete them afterwards. The employee endpoints on this playground support the full CRUD cycle.',
+      'Keep one UI test that covers the golden path so the API contract never drifts away from what the interface actually needs.',
     ],
   },
 ];
@@ -280,5 +166,21 @@ export const INTERVIEW_QUESTIONS: InterviewQuestion[] = [
     question: 'What does a healthy automation pipeline include?',
     answer:
       'Deterministic environments, sharded parallel execution, artefact upload on failure (traces, videos, reports), flake metrics, a fast smoke gate on pull requests, and a nightly full regression run.',
+  },
+  {
+    id: 'q9',
+    category: 'Locators',
+    level: 'Beginner',
+    question: 'Why prefer getByRole over CSS selectors?',
+    answer:
+      'getByRole queries the accessibility tree, so it matches how a user (and a screen reader) perceives the page. It survives markup refactors and fails loudly when a control loses its semantics, which is usually a real accessibility bug.',
+  },
+  {
+    id: 'q10',
+    category: 'Data',
+    level: 'Intermediate',
+    question: 'How do you keep test data isolated between parallel runs?',
+    answer:
+      'Never share fixed records. Create data per test through an API fixture, namespace it with a unique prefix (timestamp, worker index), and clean up in a teardown hook. The webtable lab accepts any unique employee email, which makes it a good sandbox for this pattern.',
   },
 ];

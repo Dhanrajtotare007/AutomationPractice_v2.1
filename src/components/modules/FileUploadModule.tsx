@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+﻿import { useRef, useState } from 'react';
 import { AlertTriangle, FileText, Trash2, UploadCloud } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -119,9 +119,9 @@ export function FileUploadModule() {
         />
         <label
           htmlFor="upload-single"
-          className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-center transition hover:border-burgundy-400 hover:bg-burgundy-50/40 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-burgundy-600"
+          className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-4 py-8 text-center transition hover:border-brand-400 hover:bg-brand-50/40 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-brand-600"
         >
-          <UploadCloud className="h-7 w-7 text-burgundy-600 dark:text-burgundy-300" aria-hidden />
+          <UploadCloud className="h-7 w-7 text-brand-600 dark:text-brand-300" aria-hidden />
           <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">Click to choose a file, or drop it here</span>
           <span className="text-xs text-slate-500 dark:text-slate-400">PNG, JPEG, GIF or PDF · up to 2 MB</span>
           <input
@@ -177,7 +177,7 @@ export function FileUploadModule() {
           multiple
           data-testid="upload-multiple"
           onChange={(event) => handleMultiple(event.target.files)}
-          className="field file:mr-3 file:rounded-md file:border-0 file:bg-burgundy-700 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white hover:file:bg-burgundy-800"
+          className="field file:mr-3 file:rounded-md file:border-0 file:bg-brand-700 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white hover:file:bg-brand-800"
         />
         {multiError ? (
           <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400" role="alert" data-testid="upload-multiple-error">
@@ -221,7 +221,7 @@ export function FileUploadModule() {
             size="sm"
             variant="ghost"
             onClick={() => {
-              const file = new File(['QA Automation Labs'], 'generated-report.txt', { type: 'text/plain' });
+              const file = new File(['Automation Practice'], 'generated-report.txt', { type: 'text/plain' });
               setMultiple([{ name: file.name, size: file.size, type: file.type }]);
               notify.info('Sample file added', 'generated-report.txt');
             }}
@@ -234,3 +234,4 @@ export function FileUploadModule() {
     </PracticeGrid>
   );
 }
+

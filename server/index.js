@@ -9,7 +9,6 @@ import { HttpError } from './http.js';
 import { employeesRouter } from './routes/employees.js';
 import { contactRouter } from './routes/contact.js';
 import { progressRouter } from './routes/progress.js';
-import { eventsRouter } from './routes/events.js';
 
 initSchema();
 
@@ -49,7 +48,6 @@ api.get('/health', (_req, res) => {
 api.use('/employees', employeesRouter);
 api.use('/contact', contactRouter);
 api.use('/progress', progressRouter);
-api.use('/events', eventsRouter);
 
 api.use((_req, _res, next) => next(new HttpError(404, 'API route not found')));
 
@@ -93,7 +91,7 @@ app.use((err, req, res, _next) => {
 });
 
 const server = app.listen(config.port, config.host, () => {
-  console.log(`[api] QA Automation Labs listening on http://localhost:${config.port} (${config.env})`);
+  console.log(`[api] Automation Practice listening on http://localhost:${config.port} (${config.env})`);
 });
 
 function shutdown(signal) {

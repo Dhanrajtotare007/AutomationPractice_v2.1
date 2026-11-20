@@ -83,7 +83,7 @@ export function NotificationsModule() {
             Warning notification
           </Button>
           <Button
-            className="bg-cyan-600 text-white hover:bg-cyan-700"
+            className="bg-accent-600 text-white hover:bg-accent-700"
             leftIcon={<Info className="h-4 w-4" aria-hidden />}
             onClick={() => fire('info')}
             data-testid="toast-btn-info"

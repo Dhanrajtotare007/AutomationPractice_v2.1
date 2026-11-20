@@ -64,7 +64,7 @@ export function MouseModule() {
               <ul className="space-y-1 text-xs" data-testid="mouse-log-list">
                 {log.map((entry) => (
                   <li key={entry.id} className="flex items-center gap-2 rounded-md bg-white/70 px-2 py-1 dark:bg-slate-900/60">
-                    <code className="font-mono text-[10px] font-bold uppercase text-burgundy-700 dark:text-burgundy-300">{entry.action}</code>
+                    <code className="font-mono text-[10px] font-bold uppercase text-brand-700 dark:text-brand-300">{entry.action}</code>
                     <span className="min-w-0 flex-1 truncate">{entry.detail}</span>
                     <span className="text-slate-400">{entry.at}</span>
                   </li>
@@ -110,7 +110,7 @@ export function MouseModule() {
               setCounts((current) => ({ ...current, click: current.click + 1 }));
               record('click', 'Single click');
             }}
-            className="grid h-24 place-items-center rounded-xl border-2 border-dashed border-burgundy-300 bg-burgundy-50/60 text-sm font-bold text-burgundy-800 transition hover:border-burgundy-500 hover:bg-burgundy-100 dark:border-burgundy-800 dark:bg-burgundy-950/40 dark:text-burgundy-100"
+            className="grid h-24 place-items-center rounded-xl border-2 border-dashed border-brand-300 bg-brand-50/60 text-sm font-bold text-brand-800 transition hover:border-brand-500 hover:bg-brand-100 dark:border-brand-800 dark:bg-brand-950/40 dark:text-brand-100"
           >
             <span className="flex flex-col items-center gap-1">
               <MousePointerClick className="h-5 w-5" aria-hidden />
@@ -128,7 +128,7 @@ export function MouseModule() {
               record('dblclick', 'Double click');
             }}
             onClick={() => record('click', 'Click on the double-click target')}
-            className="grid h-24 place-items-center rounded-xl border-2 border-dashed border-cyan-300 bg-cyan-50/60 text-sm font-bold text-cyan-800 transition hover:border-cyan-500 hover:bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950/40 dark:text-cyan-100"
+            className="grid h-24 place-items-center rounded-xl border-2 border-dashed border-accent-300 bg-accent-50/60 text-sm font-bold text-accent-800 transition hover:border-accent-500 hover:bg-accent-100 dark:border-accent-800 dark:bg-accent-950/40 dark:text-accent-100"
           >
             <span className="flex flex-col items-center gap-1">
               <MousePointerClick className="h-5 w-5" aria-hidden />
@@ -176,7 +176,7 @@ export function MouseModule() {
             className="group relative grid h-32 place-items-center rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold text-slate-600 transition hover:bg-white dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
           >
             <span className="transition group-hover:opacity-0">Hover me</span>
-            <span className="absolute inset-0 hidden items-center justify-center gap-2 text-burgundy-700 group-hover:flex dark:text-burgundy-300" data-testid="mouse-hover-reveal">
+            <span className="absolute inset-0 hidden items-center justify-center gap-2 text-brand-700 group-hover:flex dark:text-brand-300" data-testid="mouse-hover-reveal">
               <Pointer className="h-4 w-4" aria-hidden /> Hover detected!
             </span>
           </div>
@@ -229,7 +229,7 @@ export function MouseModule() {
             {dragging ? 'Dragging…' : position.inside ? 'Tracking pointer' : 'Move your mouse here'}
           </div>
           <div
-            className="pointer-events-none absolute h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-burgundy-600 bg-burgundy-500/30 transition-[left,top] duration-75"
+            className="pointer-events-none absolute h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-brand-600 bg-brand-500/30 transition-[left,top] duration-75"
             style={{ left: position.x, top: position.y, opacity: position.inside ? 1 : 0 }}
             aria-hidden
           />

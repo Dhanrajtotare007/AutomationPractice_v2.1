@@ -1,13 +1,12 @@
-# QA Automation Labs — UI Automation Playground
+# Automation Practice — Learn by Automating
 
-A complete, production-ready practice environment for learning web UI automation.
-It recreates the look and feel of a commercial QA training platform and ships **15 fully
-interactive testing modules**, a documented **locator catalogue** (Playwright JS/Python,
-Selenium Python and Cypress examples for every control), a **real Express + SQLite API**,
-light/dark theming, responsive layouts and an end-to-end Playwright test suite that
-verifies the whole application.
+A free, production-ready **practice platform for automation testing**. `Automation Practice`
+ships **15 fully interactive practice labs**, ten **scenario-based challenges**, a documented
+**locator catalogue** (Playwright JS/Python, Selenium Python and Cypress examples for every
+control), a **real Express + SQLite API**, light/dark theming, responsive layouts and an
+end-to-end Playwright suite that verifies the whole application.
 
-> The playground does **not** run Playwright, Selenium or Cypress inside the browser.
+> The platform does **not** run Playwright, Selenium or Cypress inside the browser.
 > It is a target application: you automate it from your own framework (it exposes stable
 > `data-testid` attributes, accessible roles, labels and ids on every control).
 
@@ -16,49 +15,65 @@ verifies the whole application.
 ## Table of contents
 
 1. [Features](#features)
-2. [Technology stack](#technology-stack)
-3. [Prerequisites](#prerequisites)
-4. [Installation](#installation)
-5. [Development commands](#development-commands)
-6. [Production build & run](#production-build--run)
-7. [Testing](#testing)
-8. [API reference](#api-reference)
-9. [Environment variables](#environment-variables)
-10. [Project structure](#project-structure)
-11. [Automation guide](#automation-guide)
-12. [Deployment](#deployment)
-13. [Known limitations](#known-limitations)
+2. [Routes](#routes)
+3. [Technology stack](#technology-stack)
+4. [Prerequisites](#prerequisites)
+5. [Installation](#installation)
+6. [Development commands](#development-commands)
+7. [Production build & run](#production-build--run)
+8. [Testing](#testing)
+9. [API reference](#api-reference)
+10. [Environment variables](#environment-variables)
+11. [Project structure](#project-structure)
+12. [Automation guide](#automation-guide)
+13. [Deployment](#deployment)
+14. [Known limitations](#known-limitations)
 
 ---
 
 ## Features
 
 ### Application shell
-- Header with brand, 10 navigation items, search, theme toggle and a responsive
-  hamburger menu (breakpoints: `< lg` hamburger, `lg–xl` condensed nav, `xl+` full nav).
-- Collapsible **Testing Tools** sidebar with the current module highlighted and per-module
-  progress badges; becomes an off-canvas drawer on phones/tablets with an explicit close button.
+- Sticky header with the `Automation Practice` wordmark, tagline, five primary links
+  (Home · Practice Labs · Challenges · Resources · About), a Resources dropdown, header search,
+  theme toggle and a prominent **Start Practicing** call to action.
+- Responsive navigation: full inline nav on desktop, hamburger + scrollable panel with grouped
+  sub-links on tablet and mobile (closes on navigation, `Escape` closes dropdowns).
+- Collapsible **Practice Labs** sidebar on every lab route with per-lab progress badges; becomes
+  an off-canvas drawer on small screens.
 - Light and dark themes (persisted in `localStorage`, pre-paint boot script, no flash).
+- Design system: indigo `brand`, teal `accent`, navy `secondary`, slate text — consistent
+  buttons, fields, cards, badges, breadcrumbs, empty states and toasts.
 - Global toast system, error boundary, skip link, focus rings and keyboard support.
 
-### Dashboard (`/testing`)
-- Maroon hero with the four required feature indicators.
-- Stats: available tools, completed exercises, overall progress, documented locators.
-- Progress bars overall and per difficulty (Beginner / Intermediate / Advanced).
-- Recently practiced modules, module cards with per-module progress, difficulty filter.
-- Promotional/booking cards.
-- Progress persistence in `localStorage` **plus** optional save/restore through the API.
+### Homepage (`/`)
+Hero (“Master Automation Testing Through Practice”) with the two required CTAs, six practice
+areas backed by real labs, six popular labs with difficulty/category/start buttons,
+“Why Automation Practice?”, the Beginner → Intermediate → Advanced journey and a footer with
+practice lab, resource, platform and contact links.
 
-### Content pages
-`/` Home, `/about`, `/courses` (filter + reserve modal with validation), `/events`
-(registration persisted to the API), `/shop` (cart with quantity and totals), `/api-docs`
-(live request console + endpoint reference), `/blog` + `/blog/:slug`,
-`/interview-preparation` (filterable Q&A), `/contact` (validated form → API), `/search`
-(full-text index over modules, locators and content) and a styled 404.
+### Practice Labs (`/labs`)
+Stats, overall + per-difficulty progress, recently practiced labs, searchable directory with
+difficulty **and** category filters, per-lab progress bars and empty states.
 
-### The 15 practice modules
-| # | Module | Highlights |
-|---|--------|-----------|
+### Challenges (`/challenges`)
+Ten ticket-style briefs (scenario, objective, suggested steps, acceptance criteria) filtered by
+level, each linking to the labs it is practised on. Solved state is persisted locally and shown
+as an overall progress bar.
+
+### Resources (`/resources`)
+A single hub with a live index over every guide, interview question, lab and locator, framework
+examples, the latest guides, quick links and every practice area.
+
+### Learning resources
+`/blog` + `/blog/:slug` (5 guides with tag filters), `/interview-preparation` (10 filterable
+Q&A), `/api-docs` (live request console, endpoint reference, schemas and example suites),
+`/contact` (validated form → API), `/search` (full-text index over the whole platform) and a
+styled 404. Legacy `/testing` URLs redirect to the matching `/labs` route.
+
+### The 15 practice labs
+| # | Lab | Highlights |
+|---|-----|-----------|
 | 1 | Checkbox | single, group, select/deselect all, indeterminate master, disabled, live output |
 | 2 | Radio Button | gender, payment, subscription plans, disabled option, live output |
 | 3 | Dropdown | native select, multi-select, searchable combobox (keyboard), dependent selects |
@@ -75,9 +90,28 @@ verifies the whole application.
 | 14 | Date Picker | native date/time inputs, custom calendar, range selection, min/max, disabled dates |
 | 15 | Dynamic Waits | delayed elements, visibility toggles and async text for explicit-wait practice |
 
-Every module page has two tabs: **Practice** (the widget) and **Locators & frameworks**
-(the locator catalogue, filterable by strategy, with copy buttons and a live “Run check”
-that evaluates the selector against the running DOM), plus framework starter snippets.
+Every lab page has two tabs — **Practice** (the widget) and **Locators & frameworks** (the
+locator catalogue, filterable by strategy, with copy buttons and a live “Run check” that
+evaluates the selector against the running DOM) — plus a framework cheat-sheet.
+
+---
+
+## Routes
+
+| Route | Page |
+|-------|------|
+| `/` | Homepage |
+| `/labs` | Practice lab directory (filters, search, progress) |
+| `/labs/:moduleSlug` | A single practice lab (`checkbox`, `radio`, `dropdown`, `form`, `webtable`, `iframe`, `shadow-dom`, `drag-drop`, `notifications`, `alerts`, `mouse`, `keyboard`, `file-upload`, `date-picker`, `waits`) |
+| `/challenges` | Scenario-based testing challenges |
+| `/resources` | Learning resources hub |
+| `/blog`, `/blog/:slug` | Automation guides |
+| `/interview-preparation` | SDET interview questions |
+| `/api-docs` | API reference + console |
+| `/contact` | Contact & support |
+| `/search` | Global search |
+| `/about` | About the platform |
+| `/testing`, `/testing/:moduleSlug` | Permanent redirects to `/labs…` |
 
 ---
 
@@ -88,7 +122,7 @@ that evaluates the selector against the running DOM), plus framework starter sni
 | Frontend | React 19, TypeScript, Vite 7, Tailwind CSS 3, lucide-react, react-router-dom 7 |
 | Backend | Node.js, Express 5, better-sqlite3, helmet, cors, compression |
 | Database | SQLite (file based, zero configuration; swap for PostgreSQL in production) |
-| Tests | Playwright Test (Chromium) — 46 passing tests across desktop, mobile and tablet |
+| Tests | Playwright Test (Chromium) — desktop, mobile and tablet projects |
 
 No other runtime dependencies were introduced.
 
@@ -149,7 +183,7 @@ In production the Express server:
 ## Testing
 
 ```bash
-npm test            # Playwright: builds are served by Express on port 4173
+npm test            # Playwright: the build in dist/ is served by Express on port 4173
 npm run test:ui     # interactive UI mode
 ```
 
@@ -157,17 +191,14 @@ The suite (`tests/`) covers:
 
 | Spec | Coverage |
 |------|----------|
-| `navigation.spec.ts` | every primary nav item, footer links, blog article, 404, hamburger menu, theme persistence, header search, sidebar navigation across all 15 modules, sidebar collapse |
-| `dashboard.spec.ts` | hero/feature indicators, stats, module filters, progress ticking + persistence + API save/restore, contact form, shop cart, courses, events, blog, interview prep, API console |
-| `locators.spec.ts` | catalogue completeness (every module + all 10 strategies), **every locator expression resolved against the live DOM**, framework snippet generation, workbench copy/run-check/empty states |
+| `navigation.spec.ts` | every primary + footer link, homepage sections, Resources dropdown, 404, hamburger menu, theme persistence, header search, sidebar navigation across all 15 labs, sidebar collapse |
+| `dashboard.spec.ts` | lab directory filters/search, progress ticking + persistence + API save/restore, homepage lab cards, challenges (filters + solved state), resources hub, contact form, blog, interview prep, API console |
+| `locators.spec.ts` | catalogue completeness (every lab + all 10 strategies), **every locator expression resolved against the live DOM**, framework snippet generation, workbench copy/run-check/empty states |
 | `modules-basic.spec.ts` | checkbox, radio, dropdown (native + searchable keyboard + dependent) and form (invalid + valid) |
 | `modules-advanced.spec.ts` | web table CRUD, iframe, shadow DOM, drag & drop, notifications, alerts, mouse, keyboard, file upload, date picker, dynamic waits |
-| `responsive.spec.ts` | drawer behaviour, navigation, **zero horizontal overflow on 22 routes at 3 viewports**, dark mode across all modules |
+| `responsive.spec.ts` | drawer behaviour, navigation, **zero horizontal overflow on the main pages and all 15 labs at 3 viewports**, dark mode across all labs |
 
 Every test also fails on any unexpected console error or page exception (`tests/fixtures.ts`).
-
-Last full run: **46 passed, 2 skipped** (the two skips are desktop-only sidebar-link checks that
-are replaced by the drawer test on mobile/tablet).
 
 ---
 
@@ -187,7 +218,6 @@ Base URL: `/api` (same origin). Responses are wrapped as `{ "data": … }`; erro
 | POST | `/api/contact` | submit a message (name, email, subject, message) |
 | GET | `/api/progress` | progress snapshot stored server-side |
 | PUT | `/api/progress` | replace snapshot (`{ completed: string[] }`) |
-| POST | `/api/events/:eventId/registrations` | register for an event (idempotent per email) |
 
 Try the endpoints interactively at **`/api-docs`**.
 
@@ -213,7 +243,7 @@ Secrets are never hard-coded; everything is read from the environment (`.env` is
 
 ```
 .
-├── index.html                 # SPA shell + pre-paint theme script
+├── index.html                 # SPA shell: title, meta/OG tags, pre-paint theme script
 ├── public/                    # favicon + iframe practice document
 │   └── iframe-demo.html
 ├── server/                    # Express API (ESM)
@@ -221,26 +251,27 @@ Secrets are never hard-coded; everything is read from the environment (`.env` is
 │   ├── config.js              # env loading + derived config
 │   ├── db.js                  # SQLite schema, seed data
 │   ├── http.js                # HttpError + validation helpers
-│   └── routes/                # employees, contact, progress, events
-├── shared/                    # code shared by client, server and tests
-│   ├── modules.ts             # 15 module definitions + exercises
+│   └── routes/                # employees, contact, progress
+├── shared/                    # code shared by client and tests
+│   ├── modules.ts             # 15 practice lab definitions + exercise counts
+│   ├── practice.ts            # categories, popular labs, challenge briefs
 │   ├── locators.ts            # locator catalogue (expressions + metadata)
 │   ├── locatorEngine.ts       # expression builders + framework snippets
-│   ├── content.ts             # courses, events, books, articles, interview Q&A
+│   ├── content.ts             # guides + interview questions
 │   └── types.ts               # shared API types
 ├── src/
 │   ├── components/
-│   │   ├── layout/            # Header, Sidebar, Footer, AppLayout, ErrorBoundary…
-│   │   ├── modules/           # the 15 practice modules + registry + cheatsheet
+│   │   ├── layout/            # Brand, Header, Sidebar, Footer, Breadcrumbs, AppLayout…
+│   │   ├── modules/           # the 15 practice labs + registry + cheatsheet
 │   │   ├── ui/                # Button, Card, Field, Modal, Toast, CodeBlock…
 │   │   └── LocatorWorkbench.tsx
-│   ├── pages/                 # content pages + testing dashboard & module page
+│   ├── pages/                 # home, labs directory, challenges, resources, guides,…
 │   ├── lib/                   # api client, progress store, theme, utils
-│   ├── config/navigation.ts
+│   ├── config/navigation.ts   # primary + footer navigation
 │   └── App.tsx / main.tsx
 ├── tests/                     # Playwright specs + fixtures
 ├── playwright.config.ts
-├── tailwind.config.js
+├── tailwind.config.js         # brand / accent / navy design tokens
 ├── vite.config.ts
 └── tsconfig.json
 ```
@@ -251,7 +282,7 @@ Secrets are never hard-coded; everything is read from the environment (`.env` is
 
 - Navigate to `http://localhost:5173` (dev) or `http://localhost:4000` (production build).
 - Prefer `getByRole`/`getByLabel`, then `getByTestId` — every control has one.
-- Module pages expose `data-testid="module-<slug>"`, `data-testid="module-title"` and
+- Lab pages expose `data-testid="module-<slug>"`, `data-testid="module-title"` and
   `data-testid="practice-panel"` for smoke tests.
 - The **Locators & frameworks** tab lists the exact expressions used by the test suite.
 - State that is asserted lives in dedicated elements (`*-value`, `*-count`, `*-output`).
@@ -259,7 +290,7 @@ Secrets are never hard-coded; everything is read from the environment (`.env` is
 Example (Playwright):
 
 ```ts
-await page.goto('http://localhost:5173/testing/checkbox');
+await page.goto('http://localhost:5173/labs/checkbox');
 await page.getByTestId('checkbox-accept-terms').check();
 await expect(page.getByTestId('checkbox-accepted-value')).toHaveText('true');
 ```
@@ -299,15 +330,14 @@ that talks to the database).
 
 ## Known limitations
 
-- **No automated-test execution in the browser.** The playground is the *target*, not a runner;
+- **No automated-test execution in the browser.** The platform is the *target*, not a runner;
   the “Run check” button only validates that a locator matches an element in the current DOM.
-- **Single-user progress.** Progress is stored in the browser and, when saved, as one snapshot
-  on the server (no accounts or authentication by design).
+- **Single-user progress.** Lab and challenge progress is stored in the browser and, when saved,
+  as one snapshot on the server (no accounts or authentication by design).
 - **SQLite** suits a single instance; swap for PostgreSQL for horizontal scaling.
 - **Cypress snippet for iframes** needs the `cypress-iframe` plugin — this is documented in the
-  module itself.
-- Demo content (prices, events, contact details, social links) is illustrative placeholder data.
+  lab itself.
+- Demo content (contact details, social links, sample employee data) is illustrative placeholder
+  data.
 - Automated tests run against Chromium only; the responsive suite simulates phone and tablet
   viewports rather than emulating them.
-#   A u t o m a t i o n P r a c t i c e _ v 2 . 1  
- 

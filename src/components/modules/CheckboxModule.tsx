@@ -122,7 +122,7 @@ export function CheckboxModule() {
         <label className="check-row mb-1 cursor-pointer border-b border-slate-200 pb-2 font-semibold dark:border-slate-800">
           <input
             type="checkbox"
-            className="mt-0.5 h-4 w-4 rounded border-slate-300 accent-burgundy-700"
+            className="mt-0.5 h-4 w-4 rounded border-slate-300 accent-brand-700"
             checked={allSelected}
             ref={(node) => {
               if (node) node.indeterminate = someSelected;

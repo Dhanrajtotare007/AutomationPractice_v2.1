@@ -1,4 +1,4 @@
-import { test, expect } from './fixtures';
+﻿import { test, expect } from './fixtures';
 import { LOCATORS } from '../shared/locators';
 import { PRACTICE_MODULES } from '../shared/modules';
 import { playwrightExpression, playwrightPythonExpression, buildSnippets, type LocatorExample } from '../shared/locatorEngine';
@@ -104,7 +104,7 @@ test.describe('locator catalogue', () => {
     }
 
     for (const [moduleSlug, locators] of byModule) {
-      await page.goto(`/testing/${moduleSlug}`);
+      await page.goto(`/labs/${moduleSlug}`);
       await expect(page.getByTestId(`module-${moduleSlug}`)).toBeVisible();
       // Some catalogue entries only exist after an interaction.
       if (moduleSlug === 'form') await page.getByTestId('form-submit-text').click();
@@ -140,7 +140,7 @@ test.describe('locator catalogue', () => {
   });
 
   test('locator workbench renders snippets and runs live checks', async ({ page }) => {
-    await page.goto('/testing/radio');
+    await page.goto('/labs/radio');
     await page.getByTestId('tab-locators').click();
     await expect(page.getByTestId('locator-workbench')).toBeVisible();
     const card = page.getByTestId('locator-radio-plan-premium');
@@ -161,3 +161,4 @@ test.describe('locator catalogue', () => {
     await expect(page.getByTestId('locator-empty')).toBeVisible();
   });
 });
+

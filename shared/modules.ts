@@ -54,7 +54,7 @@ export const PRACTICE_MODULES: PracticeModule[] = [
     difficulty: 'Intermediate',
     exercises: 4,
     icon: 'ClipboardList',
-    accent: 'from-burgundy-500/15 to-burgundy-500/5 text-burgundy-700 dark:text-burgundy-300',
+    accent: 'from-brand-500/15 to-brand-500/5 text-brand-700 dark:text-brand-300',
   },
   {
     slug: 'webtable',
@@ -144,7 +144,7 @@ export const PRACTICE_MODULES: PracticeModule[] = [
     difficulty: 'Advanced',
     exercises: 4,
     icon: 'CalendarDays',
-    accent: 'from-cyan-500/15 to-cyan-500/5 text-cyan-700 dark:text-cyan-300',
+    accent: 'from-accent-500/15 to-accent-500/5 text-accent-700 dark:text-accent-300',
   },
   {
     slug: 'waits',

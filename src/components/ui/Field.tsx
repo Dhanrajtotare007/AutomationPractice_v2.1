@@ -169,7 +169,7 @@ export function Checkbox({
         id={inputId}
         type="checkbox"
         data-testid={testId}
-        className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-slate-300 accent-burgundy-700 disabled:cursor-not-allowed"
+        className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-slate-300 accent-brand-700 disabled:cursor-not-allowed"
         {...rest}
       />
       <span>{label}</span>
@@ -191,7 +191,7 @@ export function Radio({
         id={inputId}
         type="radio"
         data-testid={testId}
-        className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer border-slate-300 accent-burgundy-700 disabled:cursor-not-allowed"
+        className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer border-slate-300 accent-brand-700 disabled:cursor-not-allowed"
         {...rest}
       />
       <span>{label}</span>

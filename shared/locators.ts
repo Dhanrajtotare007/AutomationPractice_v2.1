@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Locator catalog: one or more documented strategies for every practice control.
  * Expressions are pure and are executed against the live DOM by the UI.
  */
 import type { LocatorExample } from './locatorEngine';
 
 export const LOCATORS: LocatorExample[] = [
-  // ───────────────────────────── Checkbox ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Checkbox â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'checkbox-accept-terms',
     description: 'Single checkbox - "I accept the terms and conditions"',
@@ -76,7 +76,7 @@ export const LOCATORS: LocatorExample[] = [
     description: 'Primary navigation link via a stable CSS class',
     module: 'checkbox',
     strategy: 'Class',
-    expression: '.nav-link[href="/testing"]',
+    expression: '.nav-link[href="/labs"]',
     elementType: 'link',
   },
   {
@@ -102,7 +102,7 @@ export const LOCATORS: LocatorExample[] = [
     expression: 'Deselect All',
     elementType: 'button',
   },
-  // ───────────────────────────── Radio ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Radio â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'radio-gender-male',
     description: 'Gender group - Male radio',
@@ -153,7 +153,7 @@ export const LOCATORS: LocatorExample[] = [
     elementType: 'radio',
   },
 
-  // ───────────────────────────── Dropdown ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Dropdown â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'dropdown-country',
     description: 'Standard country dropdown',
@@ -203,7 +203,7 @@ export const LOCATORS: LocatorExample[] = [
     elementType: 'select',
   },
 
-  // ───────────────────────────── Form ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'form-first-name',
     description: 'Registration form - first name',
@@ -261,7 +261,7 @@ export const LOCATORS: LocatorExample[] = [
     notes: 'Use a wait/assertion: the element only exists after submitting an invalid address.',
   },
 
-  // ───────────────────────────── Web Table ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Web Table â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'table-search',
     description: 'Employee table search box',
@@ -310,7 +310,7 @@ export const LOCATORS: LocatorExample[] = [
     elementType: 'button',
   },
 
-  // ───────────────────────────── iFrame ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ iFrame â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'iframe-edit',
     description: 'Editable iframe element (frameLocator in Playwright)',
@@ -333,13 +333,13 @@ export const LOCATORS: LocatorExample[] = [
     description: 'Heading text inside the iframe document',
     module: 'iframe',
     strategy: 'Text',
-    expression: 'QA Automation Labs · Feedback',
+    expression: 'Automation Practice \u00b7 Feedback',
     before: ["const frame = page.frameLocator('[data-testid=\"iframe-demo\"]')"],
     notes: 'Evaluated inside the frame document - Playwright: frameLocator(...).getByText(...).',
   },
 
 
-  // ───────────────────────────── Shadow DOM ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Shadow DOM â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'shadow-input',
     description: 'Input inside an open shadow root',
@@ -368,7 +368,7 @@ export const LOCATORS: LocatorExample[] = [
     before: ["// Playwright pierces open shadow roots automatically"],
   },
 
-  // ───────────────────────────── Drag & Drop ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Drag & Drop â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'drag-item-1',
     description: 'Draggable card #1',
@@ -392,7 +392,7 @@ export const LOCATORS: LocatorExample[] = [
     elementType: 'button',
   },
 
-  // ───────────────────────────── Notifications ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Notifications â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'toast-success',
     description: 'Show success toast button',
@@ -417,7 +417,7 @@ export const LOCATORS: LocatorExample[] = [
     notes: 'Individual toasts render with data-testid="toast-item" (or toast-success…) and auto-dismiss after 4s.',
   },
 
-  // ───────────────────────────── Alerts ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Alerts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'alert-button',
     description: 'Trigger a native alert()',
@@ -443,7 +443,7 @@ export const LOCATORS: LocatorExample[] = [
     elementType: 'button',
   },
 
-  // ───────────────────────────── Mouse ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Mouse â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'mouse-click',
     description: 'Single click target',
@@ -476,7 +476,7 @@ export const LOCATORS: LocatorExample[] = [
     expression: 'mouse-hover-target',
   },
 
-  // ───────────────────────────── Keyboard ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Keyboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'keyboard-input',
     description: 'Keyboard capture input',
@@ -502,7 +502,7 @@ export const LOCATORS: LocatorExample[] = [
     elementType: 'input',
   },
 
-  // ───────────────────────────── File upload ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ File upload â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'upload-single',
     description: 'Single file input',
@@ -528,7 +528,7 @@ export const LOCATORS: LocatorExample[] = [
     elementType: 'input',
   },
 
-  // ───────────────────────────── Date picker ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Date picker â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'date-native',
     description: 'Native date input',
@@ -562,7 +562,7 @@ export const LOCATORS: LocatorExample[] = [
     elementType: 'input',
   },
 
-  // ───────────────────────────── Waits ─────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Waits â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   {
     key: 'waits-start',
     description: 'Start the delayed element timer',
@@ -580,3 +580,4 @@ export const LOCATORS: LocatorExample[] = [
     notes: 'Assert with expect(locator).toBeVisible() / wait.until(EC.visibility_of_element_located).',
   },
 ];
+

@@ -1,14 +1,15 @@
 import { clsx, type ClassValue } from '@/lib/clsx';
 
-export type BadgeTone = 'neutral' | 'brand' | 'success' | 'warning' | 'danger' | 'info';
+export type BadgeTone = 'neutral' | 'brand' | 'success' | 'warning' | 'danger' | 'info' | 'accent';
 
 const TONES: Record<BadgeTone, string> = {
-  neutral: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
-  brand: 'bg-burgundy-100 text-burgundy-800 dark:bg-burgundy-900/50 dark:text-burgundy-200',
-  success: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300',
-  warning: 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300',
-  danger: 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300',
-  info: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/40 dark:text-cyan-300',
+  neutral: 'bg-slate-100 text-slate-700 dark:bg-white/10 dark:text-slate-300',
+  brand: 'bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-200',
+  accent: 'bg-accent-50 text-accent-700 dark:bg-accent-500/15 dark:text-accent-200',
+  success: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300',
+  warning: 'bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300',
+  danger: 'bg-red-50 text-red-700 dark:bg-red-500/15 dark:text-red-300',
+  info: 'bg-sky-50 text-sky-700 dark:bg-sky-500/15 dark:text-sky-300',
 };
 
 export function Badge({
@@ -26,7 +27,7 @@ export function Badge({
     <span
       data-testid={testId}
       className={clsx(
-        'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-wide',
+        'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold tracking-wide',
         TONES[tone],
         className,
       )}

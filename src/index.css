@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -15,38 +15,49 @@
     scrollbar-width: thin;
   }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    @apply font-sans;
+    @apply bg-slate-50 font-sans text-slate-700 antialiased dark:bg-navy-950 dark:text-slate-300;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tight text-navy-900 dark:text-white;
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-cyan-500 ring-offset-2 ring-offset-white dark:ring-offset-slate-950;
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white dark:ring-offset-navy-950;
   }
 
   ::selection {
-    @apply bg-burgundy-200 text-burgundy-900;
+    @apply bg-brand-100 text-brand-900;
   }
 }
 
 @layer components {
   .surface {
-    @apply rounded-xl2 border border-slate-200 bg-white shadow-card dark:border-slate-800 dark:bg-slate-900;
+    @apply rounded-xl2 border border-slate-200/80 bg-white shadow-card dark:border-white/10 dark:bg-navy-900;
   }
 
   .surface-muted {
-    @apply rounded-xl2 border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900/60;
+    @apply rounded-xl2 border border-slate-200/80 bg-slate-50 dark:border-white/10 dark:bg-white/[0.03];
   }
 
   .field {
-    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:disabled:bg-slate-800 dark:disabled:text-slate-400;
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-navy-900 placeholder:text-slate-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-500 dark:border-white/15 dark:bg-navy-950 dark:text-slate-100 dark:placeholder:text-slate-500 dark:disabled:bg-navy-800 dark:disabled:text-slate-400;
   }
 
   .field-error {
-    @apply border-red-500 focus:border-red-500 focus:ring-red-500/30;
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/25;
   }
 
   .label {
-    @apply mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300;
+    @apply mb-1.5 block text-sm font-medium text-navy-800 dark:text-slate-300;
   }
 
   .help {
@@ -54,31 +65,47 @@
   }
 
   .check-row {
-    @apply flex items-start gap-2 rounded-lg px-2 py-1.5 text-sm text-slate-700 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800/70;
+    @apply flex items-start gap-2 rounded-lg px-2 py-1.5 text-sm text-navy-800 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5;
   }
 
   .nav-link {
-    @apply relative inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-burgundy-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white;
+    @apply relative inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-700 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white;
   }
 
   .nav-link-active {
-    @apply bg-cyan-500/15 text-cyan-700 dark:bg-cyan-500/20 dark:text-cyan-300;
+    @apply bg-brand-50 text-brand-700 dark:bg-brand-500/15 dark:text-brand-200;
   }
 
   .sidebar-link {
-    @apply flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-burgundy-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white;
+    @apply flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand-700 dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-white;
   }
 
   .sidebar-link-active {
-    @apply bg-burgundy-700 text-white shadow-sm hover:bg-burgundy-700 hover:text-white dark:bg-burgundy-600 dark:hover:bg-burgundy-600;
+    @apply bg-brand-600 text-white shadow-sm hover:bg-brand-600 hover:text-white dark:bg-brand-500 dark:hover:bg-brand-500;
   }
 
   .section-title {
-    @apply text-lg font-semibold tracking-tight text-slate-900 dark:text-white;
+    @apply text-lg font-semibold text-navy-900 dark:text-white;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-brand-600 dark:text-brand-300;
   }
 
   .prose-qa p {
     @apply mb-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-slate-200 px-2.5 py-1 text-[11px] font-semibold text-slate-600 transition hover:border-brand-300 hover:text-brand-700 dark:border-white/15 dark:text-slate-300 dark:hover:border-brand-400 dark:hover:text-white;
+  }
+
+  .chip-active {
+    @apply border-brand-600 bg-brand-600 text-white hover:border-brand-600 hover:text-white dark:border-brand-500 dark:bg-brand-500 dark:hover:text-white;
+  }
+
+  .card-link {
+    @apply surface relative flex flex-col p-5 transition duration-200 hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lift focus-visible:-translate-y-0.5 dark:hover:border-brand-400/60;
   }
 }
 
@@ -90,10 +117,24 @@
   .scrollbar-thin::-webkit-scrollbar-thumb {
     @apply rounded-full bg-slate-300 dark:bg-slate-700;
   }
+
+  /** Soft mesh background used by hero sections. */
   .hero-grid {
     background-image:
-      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12) 0, transparent 45%),
-      radial-gradient(circle at 80% 0%, rgba(34, 208, 229, 0.22) 0, transparent 40%);
+      radial-gradient(circle at 12% 18%, rgba(99, 102, 241, 0.28) 0, transparent 45%),
+      radial-gradient(circle at 82% 4%, rgba(20, 184, 166, 0.24) 0, transparent 42%),
+      radial-gradient(circle at 65% 90%, rgba(79, 70, 229, 0.22) 0, transparent 48%);
+  }
+
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.16) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.16) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
@@ -107,6 +148,11 @@
 }
 
 @keyframes toast-shrink {
-  from { transform: scaleX(1); }
-  to { transform: scaleX(0); }
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
 }
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Locator practice system.
  *
  * For every documented element we render the locator expression together with
@@ -126,7 +126,7 @@ function LocatorCard({ example }: { example: LocatorExample }) {
         </div>
         <Link
           to={moduleUrl(example.module)}
-          className="text-xs font-semibold text-burgundy-700 underline-offset-2 hover:underline dark:text-burgundy-300"
+          className="text-xs font-semibold text-brand-700 underline-offset-2 hover:underline dark:text-brand-300"
         >
           Open module →
         </Link>
@@ -137,7 +137,7 @@ function LocatorCard({ example }: { example: LocatorExample }) {
           <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Locator expression</p>
           <div className="flex flex-wrap items-center gap-2">
             <code
-              className="flex-1 overflow-x-auto whitespace-pre rounded-lg bg-slate-900 px-3 py-2 font-mono text-[12.5px] text-cyan-200 dark:bg-slate-950"
+              className="flex-1 overflow-x-auto whitespace-pre rounded-lg bg-slate-900 px-3 py-2 font-mono text-[12.5px] text-accent-200 dark:bg-slate-950"
               data-testid={`locator-expression-${example.key}`}
             >
               {expression}
@@ -145,7 +145,7 @@ function LocatorCard({ example }: { example: LocatorExample }) {
             <button
               type="button"
               onClick={() => setResult(evaluateLocator(example))}
-              className="inline-flex items-center gap-1 rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-cyan-400 hover:text-cyan-700 dark:border-slate-700 dark:text-slate-200 dark:hover:text-cyan-300"
+              className="inline-flex items-center gap-1 rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-accent-400 hover:text-accent-700 dark:border-slate-700 dark:text-slate-200 dark:hover:text-accent-300"
               data-testid={`locator-check-${example.key}`}
             >
               <PlayCircle className="h-3.5 w-3.5" aria-hidden /> Run check
@@ -184,7 +184,7 @@ function LocatorCard({ example }: { example: LocatorExample }) {
                 className={cx(
                   'rounded-md px-2 py-1 text-[11px] font-semibold transition',
                   active === fw.key
-                    ? 'bg-burgundy-700 text-white'
+                    ? 'bg-brand-700 text-white'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700',
                 )}
               >
@@ -200,7 +200,7 @@ function LocatorCard({ example }: { example: LocatorExample }) {
             maxHeight="max-h-64"
           />
           <details className="mt-2">
-            <summary className="cursor-pointer text-[11px] font-semibold text-slate-500 hover:text-burgundy-700 dark:text-slate-400 dark:hover:text-white">
+            <summary className="cursor-pointer text-[11px] font-semibold text-slate-500 hover:text-brand-700 dark:text-slate-400 dark:hover:text-white">
               Page object variant (Selenium)
             </summary>
             <CodeBlock code={snippets.pageObjectPy ?? ''} title="page_object.py" maxHeight="max-h-40" className="mt-1.5" />
@@ -240,7 +240,7 @@ export function LocatorWorkbench({ moduleSlug }: { moduleSlug?: string }) {
       <CardHeader
         icon={<ShieldCheck className="h-4 w-4" aria-hidden />}
         title="Locator practice"
-        description="Every control in the playground is documented with automation locators. Copy a snippet or run a live DOM check."
+        description="Every control in this practice lab is documented with automation locators. Copy a snippet or run a live DOM check."
         actions={
           <Badge tone="brand" testId="locator-count">
             {filtered.length} locators
@@ -280,8 +280,8 @@ export function LocatorWorkbench({ moduleSlug }: { moduleSlug?: string }) {
               className={cx(
                 'rounded-full border px-2.5 py-1 text-[11px] font-semibold transition',
                 strategy === item
-                  ? 'border-burgundy-700 bg-burgundy-700 text-white'
-                  : 'border-slate-200 text-slate-600 hover:border-burgundy-300 hover:text-burgundy-700 dark:border-slate-700 dark:text-slate-300',
+                  ? 'border-brand-700 bg-brand-700 text-white'
+                  : 'border-slate-200 text-slate-600 hover:border-brand-300 hover:text-brand-700 dark:border-slate-700 dark:text-slate-300',
               )}
             >
               {item}
@@ -312,3 +312,4 @@ export function LocatorWorkbench({ moduleSlug }: { moduleSlug?: string }) {
     </Card>
   );
 }
+

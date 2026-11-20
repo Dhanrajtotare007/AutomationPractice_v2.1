@@ -40,7 +40,7 @@ export function CardHeader({
       <div className="flex items-start gap-3">
         {icon ? (
           <span
-            className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-burgundy-50 text-burgundy-700 dark:bg-burgundy-900/40 dark:text-burgundy-200"
+            className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-200"
             aria-hidden
           >
             {icon}
@@ -74,13 +74,13 @@ export function Stat({
   return (
     <div className="surface flex items-center gap-4 p-4" data-testid={testId}>
       {icon ? (
-        <span className="grid h-11 w-11 place-items-center rounded-xl bg-burgundy-50 text-burgundy-700 dark:bg-burgundy-900/40 dark:text-burgundy-200">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-200">
           {icon}
         </span>
       ) : null}
       <div className="min-w-0">
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{label}</p>
-        <p className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">{value}</p>
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">{label}</p>
+        <p className="text-2xl font-bold tracking-tight text-navy-900 dark:text-white">{value}</p>
         {hint ? <p className="truncate text-xs text-slate-500 dark:text-slate-400">{hint}</p> : null}
       </div>
     </div>
@@ -100,7 +100,11 @@ export function ProgressBar({
 }) {
   const clamped = Math.max(0, Math.min(100, Math.round(value)));
   const toneClass =
-    tone === 'success' ? 'bg-emerald-500' : tone === 'info' ? 'bg-cyan-500' : 'bg-gradient-to-r from-burgundy-700 to-burgundy-500';
+    tone === 'success'
+      ? 'bg-emerald-500'
+      : tone === 'info'
+        ? 'bg-accent-500'
+        : 'bg-gradient-to-r from-brand-600 to-brand-400';
   return (
     <div>
       {label ? (
@@ -110,7 +114,7 @@ export function ProgressBar({
         </div>
       ) : null}
       <div
-        className="h-2.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800"
+        className="h-2.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-white/10"
         role="progressbar"
         aria-valuenow={clamped}
         aria-valuemin={0}
@@ -138,11 +142,11 @@ export function EmptyState({
 }) {
   return (
     <div
-      className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 px-6 py-10 text-center dark:border-slate-700"
+      className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 px-6 py-10 text-center dark:border-white/15"
       data-testid="empty-state"
     >
-      {icon ? <span className="text-slate-400 dark:text-slate-600">{icon}</span> : null}
-      <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{title}</p>
+      {icon ? <span className="text-slate-400 dark:text-slate-500">{icon}</span> : null}
+      <p className="text-sm font-semibold text-navy-800 dark:text-slate-200">{title}</p>
       {description ? <p className="max-w-sm text-xs text-slate-500 dark:text-slate-400">{description}</p> : null}
       {action}
     </div>
@@ -152,7 +156,7 @@ export function EmptyState({
 export function Spinner({ label = 'Loading' }: { label?: string }) {
   return (
     <span className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400" role="status" aria-live="polite">
-      <svg className="h-4 w-4 animate-spin text-burgundy-700 dark:text-burgundy-300" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <svg className="h-4 w-4 animate-spin text-brand-600 dark:text-brand-300" viewBox="0 0 24 24" fill="none" aria-hidden>
         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
         <path className="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
       </svg>
@@ -162,5 +166,5 @@ export function Spinner({ label = 'Loading' }: { label?: string }) {
 }
 
 export function Skeleton({ className }: { className?: string }) {
-  return <div className={clsx('animate-pulse rounded-md bg-slate-200 dark:bg-slate-800', className)} aria-hidden />;
+  return <div className={clsx('animate-pulse rounded-md bg-slate-200 dark:bg-white/10', className)} aria-hidden />;
 }

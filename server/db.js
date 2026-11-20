@@ -11,18 +11,18 @@ db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
 
 const SEED_EMPLOYEES = [
-  ['Aarav Sharma', 'aarav.sharma@qaautomationlabs.com', 'Engineering', 'SDET', 78000, 'Active', '2023-03-14'],
-  ['Priya Raman', 'priya.raman@qaautomationlabs.com', 'Quality Assurance', 'QA Engineer', 72000, 'Active', '2022-11-02'],
-  ['Marco Silva', 'marco.silva@qaautomationlabs.com', 'Engineering', 'Frontend Developer', 85000, 'On leave', '2021-06-21'],
-  ['Aditi Verma', 'aditi.verma@qaautomationlabs.com', 'Quality Assurance', 'SDET', 81000, 'Active', '2023-01-09'],
-  ['Daniel Okafor', 'daniel.okafor@qaautomationlabs.com', 'Product', 'Product Manager', 96000, 'Active', '2020-09-30'],
-  ['Lena Fischer', 'lena.fischer@qaautomationlabs.com', 'Design', 'UX Designer', 74000, 'Active', '2024-02-05'],
-  ['Hiro Tanaka', 'hiro.tanaka@qaautomationlabs.com', 'Engineering', 'Backend Developer', 88000, 'Inactive', '2019-07-17'],
-  ['Sofia Rossi', 'sofia.rossi@qaautomationlabs.com', 'Marketing', 'Product Manager', 69000, 'Active', '2022-04-11'],
-  ['Rahul Nair', 'rahul.nair@qaautomationlabs.com', 'Quality Assurance', 'QA Engineer', 67000, 'On leave', '2024-08-19'],
-  ['Emma Johnson', 'emma.johnson@qaautomationlabs.com', 'Support', 'Support Specialist', 58000, 'Active', '2023-10-23'],
-  ['Chen Wei', 'chen.wei@qaautomationlabs.com', 'Engineering', 'SDET', 90000, 'Active', '2021-12-01'],
-  ['Fatima Al-Sayed', 'fatima.alsayed@qaautomationlabs.com', 'Design', 'UX Designer', 71000, 'Active', '2024-05-06'],
+  ['Aarav Sharma', 'aarav.sharma@automationpractice.com', 'Engineering', 'SDET', 78000, 'Active', '2023-03-14'],
+  ['Priya Raman', 'priya.raman@automationpractice.com', 'Quality Assurance', 'QA Engineer', 72000, 'Active', '2022-11-02'],
+  ['Marco Silva', 'marco.silva@automationpractice.com', 'Engineering', 'Frontend Developer', 85000, 'On leave', '2021-06-21'],
+  ['Aditi Verma', 'aditi.verma@automationpractice.com', 'Quality Assurance', 'SDET', 81000, 'Active', '2023-01-09'],
+  ['Daniel Okafor', 'daniel.okafor@automationpractice.com', 'Product', 'Product Manager', 96000, 'Active', '2020-09-30'],
+  ['Lena Fischer', 'lena.fischer@automationpractice.com', 'Design', 'UX Designer', 74000, 'Active', '2024-02-05'],
+  ['Hiro Tanaka', 'hiro.tanaka@automationpractice.com', 'Engineering', 'Backend Developer', 88000, 'Inactive', '2019-07-17'],
+  ['Sofia Rossi', 'sofia.rossi@automationpractice.com', 'Marketing', 'Product Manager', 69000, 'Active', '2022-04-11'],
+  ['Rahul Nair', 'rahul.nair@automationpractice.com', 'Quality Assurance', 'QA Engineer', 67000, 'On leave', '2024-08-19'],
+  ['Emma Johnson', 'emma.johnson@automationpractice.com', 'Support', 'Support Specialist', 58000, 'Active', '2023-10-23'],
+  ['Chen Wei', 'chen.wei@automationpractice.com', 'Engineering', 'SDET', 90000, 'Active', '2021-12-01'],
+  ['Fatima Al-Sayed', 'fatima.alsayed@automationpractice.com', 'Design', 'UX Designer', 71000, 'Active', '2024-05-06'],
 ];
 
 export function initSchema() {
@@ -52,14 +52,6 @@ export function initSchema() {
       id INTEGER PRIMARY KEY CHECK (id = 1),
       completed TEXT NOT NULL DEFAULT '[]',
       updated_at TEXT NOT NULL DEFAULT (datetime('now'))
-    );
-
-    CREATE TABLE IF NOT EXISTS event_registrations (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      event_id TEXT NOT NULL,
-      name TEXT NOT NULL,
-      email TEXT NOT NULL,
-      created_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
   `);
 

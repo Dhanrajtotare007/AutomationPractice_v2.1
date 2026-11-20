@@ -135,15 +135,15 @@ export function RadioModule() {
                 key={option.value}
                 className={`flex cursor-pointer items-start gap-2 rounded-xl border p-3 text-sm transition ${
                   payment === option.value
-                    ? 'border-burgundy-500 bg-burgundy-50 dark:border-burgundy-500 dark:bg-burgundy-950/40'
-                    : 'border-slate-200 hover:border-burgundy-300 dark:border-slate-700'
+                    ? 'border-brand-500 bg-brand-50 dark:border-brand-500 dark:bg-brand-950/40'
+                    : 'border-slate-200 hover:border-brand-300 dark:border-slate-700'
                 }`}
               >
                 <input
                   type="radio"
                   name="payment"
                   value={option.value}
-                  className="mt-0.5 h-4 w-4 accent-burgundy-700"
+                  className="mt-0.5 h-4 w-4 accent-brand-700"
                   checked={payment === option.value}
                   onChange={() => setPayment(option.value)}
                   data-testid={`radio-payment-${option.value}`}
